@@ -3,46 +3,64 @@ import math
 
 
 def first():
-    f=input('Введите первое число:')
-    
-    f2=input('Введите второе число:')
-    
-    if (f.find('.')!=-1)or(f2.find('.')!=-1):
-        ft=float
-    else: 
-        ft = int 
-    if f2=='0':
-        fk='Деление на ноль'
-        fk2=fk
-        delmodul = fk
-    else:
-        fk= ft(f)/ft(f2)
-        fk2=ft(f)//ft(f2)
-        delmodul=ft(f)%ft(f2)
-    print(f"Складываем: {ft(f)+ft(f2)} \n Вычитаем: {(ft(f))-(ft(f2))} \n Умножаем: {ft(f)*ft(f2)} \n  Делим : {fk}")
-    print(f"Возводим в степень: {ft(f)**ft(f2)} \n  Деление по модулю: {delmodul} \n Целочисленное деление: {fk2} ")
-
-
-
+   x=0
+   y=0
+   dvig = input("Введите куда сдвинуться и насколько?\n")
+   if dvig.find('Вправо')!=-1:
+      x += int(dvig[dvig.find('Вправо')+6:])
+   if dvig.find('Влево')!=-1:
+      x -= int(dvig[dvig.find('Влево')+5:])
+   if dvig.find('Вниз')!=-1:
+      y -= int(dvig[dvig.find('Вниз')+4:])
+   if dvig.find('Вверх')!=-1:
+      y += int(dvig[dvig.find('Вверх')+5:])
+   print(f"Вы в позиции ({x},{y})")
+      
 
 def second():
-    name= input('Введите ваше имя:')
-    print("Привет, "+name+'!')
-def third():
-    str= input('Введите строку:')
-    print(''.join(reversed(str[len(str)-2:len(str)])))
-    
+   x=0
+   y=0
+   while True:
 
-def four():
-    r=input('Введите радиус круга: ')
-    if (r.find('.')!=-1):
-        ft=float
-    else: 
-        ft = int 
-    print('S='+str(math.pi*ft(r)*ft(r)))
+        dvig = input("Введите куда сдвинуться и насколько? Чтобы выйти введит q \n")
+        if dvig.find('q')!=-1:
+            break
+        if dvig.find('Вправо')!=-1:
+            x += int(dvig[dvig.find('Вправо')+6:])
+        if dvig.find('Влево')!=-1:
+            x -= int(dvig[dvig.find('Влево')+5:])
+        if dvig.find('Вниз')!=-1:
+            y -= int(dvig[dvig.find('Вниз')+4:])
+        if dvig.find('Вверх')!=-1:
+            y += int(dvig[dvig.find('Вверх')+5:])
+        print(f"Вы в позиции ({x},{y})")
+   print(f"Вы в позиции ({x},{y})")
+
+
+def third():
+    print("Введите коэффициенты для уравнения, a не равно 0")
+    print("ax^2 + bx + c = 0:")
+    a = float(input("a = "))
+    b = float(input("b = "))
+    c = float(input("c = "))
+    print(f"Вы ввели уравнение {a}x^2+{b}x+{c}=0:")
+    d = b ** 2 - 4 * a * c
+    print(f"Дискриминант : {d}")
+    if d >0:
+        x1 = (-b + math.sqrt(d)) / (2 * a)
+        x2 = (-b - math.sqrt(d)) / (2 * a)
+        print(f"x1={x1} \n x2={x2}")
+    elif d==0:
+        x = -b/(2*a)
+        print(f"x={x}")
+    else:
+        x1= complex(-b,math.sqrt(-d)) / (2*a)
+        x2= complex(-b,-math.sqrt(-d)) /(2*a)
+        print(f"x1 = {x1} \n x2 = {x2}")
+
 
 if __name__ == "__main__":
     first()
     second()
     third()
-    four()
+   # four()
