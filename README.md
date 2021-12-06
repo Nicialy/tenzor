@@ -1,5 +1,10 @@
-<<<<<<< HEAD
 Домашняя работа №4
-=======
-Домашняя работа №3
->>>>>>> 4e27898d24bb2a35bfb051076d72bcecf0710273
+
+1.Установка зависимостей
+```bash
+foo@bar:~$ pip install requirements.txt
+```
+2.Запуск
+```bash
+foo@bar:~$ python main.py
+```
