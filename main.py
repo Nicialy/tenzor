@@ -1,36 +1,45 @@
-from fastapi import FastAPI,HTTPException,status
-import re
 
-import uvicorn
+def bytecode(a:list):
+    byte=[]
+    for i in a:
+        byte.append(i.encode())
+    return byte
+def decodebyte(a:list):
+    decode=[]
+    for i in a:
+        decode.append(i.decode())
+    return decode
 
+def  first_problem():
+    s=["Как дела?","Good luck have fun", "Nothing to do","Что делаешь"]
+    s = bytecode(s)
+    print(s)
+    print(decodebyte(s))
+def second_problem():
+    try:
+        with open('Input.txt','r') as f:
+            Cnum = int(f.readline())
+            Hnum = int(f.readline())
+            Onum = int(f.readline())
+            if Cnum < 0 or Hnum < 0 or Onum <0:
+                print("Отрицательными не могут быть молекулы") 
+                return -1
+            Cnum //= 2
+            Hnum //= 6
+            otvet=min(Cnum,min(Hnum,Onum))
+            with open("Output.txt","w") as g:
+                g.write(str(otvet))
             
+    except (FileNotFoundError , ValueError):
+                print("Проверьте файл")
 
+def third_problem():
+    pass
 
-app = FastAPI()
-
-@app.post('/registration')
-async def registr(request: str):
-    
-    
-    if len(request)< 6 or request.isdigit() or not bool(re.search(r'\d', request)) or request.lower == 'password':
-
-        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,
-                        detail = f"Bad password, password shoud be better :)")
-    
-    
-    
-    # generate a jwt token and return
-    
-    return {"access_token": "True", "token_type": "bearer"}
-
-@app.get('/fibonachi')
-def fib(n:int):
-    if n == 1 or n == 2:
-        return 1
-    else:
-        return fib(n - 1) + fib(n - 2)
-
-
+   
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8081, reload=True)
+    first_problem()
+    second_problem()
+    third_problem()
+    
