@@ -1,30 +1,23 @@
-import os
-from database import Database
-import asyncio
-import numpy as np
+from schemas import Human, Mammals, Cat, Dog, Student
 
 
-def work_with_os():
-    print(f'Имя ос - {os.name}')
-    print(f'Имя пользователя - {os.getlogin()}')
-    print(f'Список папок и директорий в папке - {os.listdir(path=".")}')
-
-
-async def database_connect():
-
-    db = Database
-    await db.create_pool(db)
-
-
-def work_with_numpy():
-    a = np.random.sample((3, 3))
-    print(a)
-    print('-'*40)
-    return a.transpose()
-
-
-if __name__ == "__main__":
-    work_with_os()
-    print(work_with_numpy())
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(database_connect())
+mammals = Mammals('python', 3, 'male')
+mammals.hello_iam_mammals()
+human = Human('Human', 15, 'male', "Сергей")
+human.hello_iam_mammals()
+human.say_hello()
+cat = Cat('Cat', 15, 'male', 'Kot9')
+dog = Dog('Dog', 12, 'male', 'Tobik')
+dog.make_sound()
+cat.make_sound()
+cat.info()
+dog.info()
+cat.hello_iam_mammals()
+dog.hello_iam_mammals()
+student1 = Student('Human', 19, 'male', 'Andrey', 5)
+student2 = Student('Human', 19, 'female', 'Kristina', 4)
+print(student1 == student2)
+print(student1 > student2)
+print(student1 < student2)
+print(student1 >= student2)
+print(student1 <= student2)

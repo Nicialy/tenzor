@@ -1,5 +1,5 @@
 import asyncpg
-from settings import DATABASE_URL
+from homework.settings import DATABASE_URL
 
 
 class Database():
