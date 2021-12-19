@@ -4,3 +4,5 @@ __pycache__/
 *.env
 # Окружение
 .venv
+#cache pytest
+.pytest_cache/
