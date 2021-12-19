@@ -3,6 +3,9 @@ from resheto import proverka_prost
 
 class TestResheto:
 
+    def test_prostoe_1_f(self):
+        assert proverka_prost(1) == False
+
     def test_prostoe_2_t(self):
         assert proverka_prost(2) == True
 
